@@ -50,7 +50,7 @@ public class Student {
     private Role role;
 
     @ManyToOne
-   // @JoinColumn(name = "school_id", referencedColumnName = "id")
+    @JoinColumn(name = "school_id", referencedColumnName = "id")
     private School school  ;
     public enum Role {
         ADMIN, MANAGER,STUDENT
