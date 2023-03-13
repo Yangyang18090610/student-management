@@ -17,7 +17,7 @@ public class SpecificationStudent {
                 String pattern = "%" + form.getSearch().trim() + "%";
                 predicates.add(criteriaBuilder.or(
                         criteriaBuilder.like(root.get("username"), pattern),
-                        criteriaBuilder.like(root.get("aClass").get("name"), pattern)
+                        criteriaBuilder.like(root.get("school").get("name"), pattern)
                         ));
             }
             if (form.getMinId()!= null){

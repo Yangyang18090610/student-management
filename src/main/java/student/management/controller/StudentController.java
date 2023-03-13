@@ -2,10 +2,12 @@ package student.management.controller;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import student.management.dto.StudentDTO;
@@ -40,14 +42,16 @@ public class StudentController {
         StudentDTO dto = mapper.map(student,StudentDTO.class);
         return dto;
     }
-    @DeleteMapping
-    public void deleteAllById(@RequestBody List<Integer> ids) {
-        service.deleteAllById(ids);
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") int id) {
+        service.deleteById(id);
     }
+
     @PostMapping
     public void create(@RequestBody StudentCreateForm form) {
         service.create(form);
     }
+
     @PutMapping("/{id}")
     public void update(@PathVariable("id") int id, @RequestBody StudentUpdateForm form) {
         form.setId(id);

@@ -44,45 +44,45 @@ public class SecurityConfiguration {
 //                phân quyền : authorizeHttpRequests
                 .authorizeHttpRequests(authorizeHttpRequests ->
                         authorizeHttpRequests
-                                .antMatchers(HttpMethod.DELETE)
-                                .hasAuthority("ADMIN")
-                                .antMatchers(HttpMethod.POST, "/api/v1/students/**", "/api/v1/schools/**")
-                                .hasAnyAuthority("ADMIN", "MANAGER")
-                                .antMatchers(HttpMethod.PUT, "/api/v1/students/**", "/api/v1/schools/**")
-                                .hasAnyAuthority("ADMIN", "MANAGER")
+//                                .antMatchers(HttpMethod.DELETE)
+//                                .hasAuthority("ADMIN")
+//                                .antMatchers(HttpMethod.POST, "/api/v1/students/**", "/api/v1/schools/**")
+//                                .hasAnyAuthority("ADMIN", "MANAGER")
+//                                .antMatchers(HttpMethod.PUT, "/api/v1/students/**", "/api/v1/schools/**")
+//                                .hasAnyAuthority("ADMIN", "MANAGER")
 
-                                .antMatchers("/api/v1/auth/**")
+                                .antMatchers("/api/v1/**")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )
-                .formLogin(formLogin ->
-                                formLogin
-//                                Đường dẫn của trang login
-                                        .loginPage("/page/auth/login/index.html")
-//                                Đường dẫn đến người xử lý
-                                        .loginProcessingUrl("/api/v1/auth/login")
-                                        .defaultSuccessUrl("/index.html")
-                )
-                .logout(logout ->
-                        logout
-                                .logoutUrl("/api/v1/auth/logout")
-                                .deleteCookies("JSESSIONID")
-                )
-                .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret"))
+//                .formLogin(formLogin ->
+//                                formLogin
+////                                Đường dẫn của trang login
+//                                        .loginPage("/page/auth/login/index.html")
+////                                Đường dẫn đến người xử lý
+//                                        .loginProcessingUrl("/api/v1/auth/login")
+//                                        .defaultSuccessUrl("/index.html")
+//                )
+//                .logout(logout ->
+//                        logout
+//                                .logoutUrl("/api/v1/auth/logout")
+//                                .deleteCookies("JSESSIONID")
+//                )
+//                .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret"))
 
 
                 .httpBasic();
         return http.build();
     }
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().antMatchers(
-                "/",
-                "/index.html",
-                "/common/**",
-                "/page/**"
-        );
-    }
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web) -> web.ignoring().antMatchers(
+//                "/",
+//                "/index.html",
+//                "/common/**",
+//                "/page/**"
+//        );
+//    }
 
 }

@@ -1,5 +1,6 @@
 package student.management.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import student.management.specification.SpecificationSchool;
 import java.util.List;
 
 @Service
+
 public class SchoolService implements ISchoolService {
     @Autowired
     private ModelMapper mapper;
@@ -42,14 +44,16 @@ public class SchoolService implements ISchoolService {
     @Override
     public void create(SchoolCreateForm form) {
         School school = mapper.map(form, School.class);
-        List<Student> students = school.getStudents();
-        if (!students.isEmpty()) {
-            for (Student student : students) {
-                student.setSchool(school);
-                String encodedPassword = passwordEncoder.encode(student.getPassword());
-                student.setPassword(encodedPassword);
-            }
-        }
+//        List<Student> students = school.getStudents();
+//        if (!students.isEmpty()) {
+//            for (Student student : students) {
+//                student.setSchool(school);
+//                String encodedPassword = passwordEncoder.encode(student.getPassword());
+//                student.setPassword(encodedPassword);
+////                student.setRole();
+//            }
+//        }
+
         repository.save(school);
     }
 
@@ -60,7 +64,7 @@ public class SchoolService implements ISchoolService {
     }
 
     @Override
-    public void deleteAllById(List<Integer> ids) {
-        repository.deleteAllById(ids);
+    public void deleteById(int id) {
+        repository.deleteById(id);
     }
 }

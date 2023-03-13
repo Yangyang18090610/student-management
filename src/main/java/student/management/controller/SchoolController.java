@@ -30,16 +30,16 @@ public class SchoolController {
     @GetMapping
     public Page<SchoolDTO> findAll(@SortDefault(value = "totalMembers", direction = Sort.Direction.DESC) Pageable pageable, SchoolFilterForm form) {
         Page<School> page = service.findAll(pageable, form);
-        List<School> aClass = page.getContent();
+        List<School> schoool = page.getContent();
         List<SchoolDTO> dtos = mapper.map(
-                aClass,
+                schoool,
                 new TypeToken<List<SchoolDTO>>(){}.getType());
         return new PageImpl<>(dtos,pageable, page.getTotalElements());
     }
     @GetMapping("/{id}")
     public SchoolDTO findById(@PathVariable("id") int id){
-        School aClass = service.findById(id);
-        SchoolDTO dto = mapper.map(aClass, SchoolDTO.class);
+        School school = service.findById(id);
+        SchoolDTO dto = mapper.map(school, SchoolDTO.class);
         return dto;
     }
 
@@ -50,11 +50,11 @@ public class SchoolController {
     }
     @PutMapping("/{id}")
     public void update(@PathVariable("id")int id, SchoolUpdateForm form){
-        form.setId(id);
+//        form.setId(id);
         service.update(form);
     }
-    @DeleteMapping
-    public void deleteAllById(@RequestBody List<Integer> ids){
-        service.deleteAllById(ids);
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id")int id){
+        service.deleteById(id);
     }
 }

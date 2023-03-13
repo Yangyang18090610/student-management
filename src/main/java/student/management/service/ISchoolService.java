@@ -19,6 +19,6 @@ public interface ISchoolService {
 
     void update(SchoolUpdateForm form);
 
-    void deleteAllById(List<Integer> ids);
+    void deleteById(int id);
 
 }

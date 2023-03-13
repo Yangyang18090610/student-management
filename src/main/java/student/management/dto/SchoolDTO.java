@@ -16,9 +16,9 @@ public class SchoolDTO {
     private Integer totalMembers;
     private Type type;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime createdAt;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd ")
     private LocalDateTime updateAt;
 
     private List<StudentDTO> students;
@@ -26,8 +26,9 @@ public class SchoolDTO {
     @Setter
     @Getter
     public static class StudentDTO {
-        @JsonProperty("accountid")
+        @JsonProperty("studentid")
         private Integer id;
-        private String username;
+        private String fullName;
+        private String userName;
     }
 }

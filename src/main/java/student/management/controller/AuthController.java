@@ -21,7 +21,7 @@ public class AuthController {
     @Autowired
     private IStudentService service;
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public void register(@RequestBody StudentCreateForm form){
         service.create(form);
     }
