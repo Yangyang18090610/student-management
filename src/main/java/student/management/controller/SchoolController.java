@@ -49,8 +49,8 @@ public class SchoolController {
         service.create(form);
     }
     @PutMapping("/{id}")
-    public void update(@PathVariable("id")int id, SchoolUpdateForm form){
-//        form.setId(id);
+    public void update(@PathVariable("id")int id,@RequestBody SchoolUpdateForm form){
+        form.setId(id);
         service.update(form);
     }
     @DeleteMapping("/{id}")

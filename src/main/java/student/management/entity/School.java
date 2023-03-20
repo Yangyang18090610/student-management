@@ -22,7 +22,7 @@ public class School {
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
 
-    @Column(name = "total_members", nullable = false, updatable = false)
+    @Column(name = "total_members", nullable = false, updatable = true)
     private Integer totalMembers;
 
     @Column(name= "type", length = 7, nullable = false)
@@ -42,6 +42,5 @@ public class School {
     public enum Type{
         FRESHER,JUNIOR,SENIOR
     }
-
 
 }

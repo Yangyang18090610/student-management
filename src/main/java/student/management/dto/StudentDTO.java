@@ -13,7 +13,10 @@ import java.util.Date;
 public class StudentDTO {
     private Integer id;
     private String role;
+    private String password;
     private String userName;
+    private String firstName;
+    private String lastName;
     private String fullName;
     private String schoolName;
     private String gender;
