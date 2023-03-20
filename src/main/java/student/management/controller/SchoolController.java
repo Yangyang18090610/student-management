@@ -44,7 +44,7 @@ public class SchoolController {
     }
 
     @PostMapping
-    public void create (@RequestBody @Valid SchoolCreateForm form){
+    public void create (@RequestBody SchoolCreateForm form){
         System.out.println(form);
         service.create(form);
     }
